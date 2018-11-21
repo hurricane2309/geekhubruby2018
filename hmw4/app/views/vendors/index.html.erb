@@ -1,0 +1,21 @@
+<h1>Listing vendors</h1>
+<%= link_to 'New vendor', new_vendor_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th></th>
+  </tr>
+
+  <% @vendors.each do |vendor| %>
+    <tr>
+      <td><%= vendor.name %></td>
+      <td><%= vendor.image %></td>
+      <td><%= link_to 'Show', vendor_path(vendor) %></td>
+      <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
+      <td><%= link_to 'Destroy', vendor_path(vendor),
+              method: :delete,
+              data: { confirm: 'Did you really want to delete this supplier?' } %></td>
+    </tr>
+  <% end %>
+</table>

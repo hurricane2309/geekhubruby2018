@@ -1,0 +1,15 @@
+<%= link_to 'New category', new_category_path(@category) %>
+<%= link_to 'All categories', categories_path %>
+<p>
+  <strong>Name:</strong>
+  <%= @store.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @store.image.url, class: 'img-show' if @store.image?  %>
+</p>
+
+
+<%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Back', stores_path %>

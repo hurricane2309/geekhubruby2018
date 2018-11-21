@@ -1,0 +1,21 @@
+<h1>Listing products</h1>
+<%= link_to 'New product', new_product_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th></th>
+  </tr>
+
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.image %></td>
+      <td><%= link_to 'Show', product_path(product) %></td>
+      <td><%= link_to 'Edit', edit_product_path(product) %></td>
+      <td><%= link_to 'Destroy', product_path(product),
+              method: :delete,
+              data: { confirm: 'Did you really want to delete this product?' } %></td>
+    </tr>
+  <% end %>
+</table>

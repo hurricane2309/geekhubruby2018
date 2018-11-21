@@ -1,0 +1,29 @@
+<% if user_signed_in? %>
+    <span>Здравствуйте, <%= current_user.email %></span>
+    <%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
+<% else %>
+    <%= link_to 'Sign In', new_user_session_path %> or <%= link_to 'Sign Up', new_user_registration_path %>
+<% end %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<h1>Listing stores</h1>
+<%= link_to 'New store', new_store_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th></th>
+  </tr>
+
+  <% @stores.each do |store| %>
+    <tr>
+      <td><%= store.name %></td>
+      <td><%= store.image %></td>
+      <td><%= link_to 'Show', store_path(store) %></td>
+      <td><%= link_to 'Edit', edit_store_path(store) %></td>
+      <td><%= link_to 'Destroy', store_path(store),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
