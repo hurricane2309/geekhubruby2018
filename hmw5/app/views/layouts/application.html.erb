@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hmw5</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= countries_path %>">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= cities_path %>">Cities</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= airports_path %>">Airports</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= planes_path %>">Planes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= passengers_path %>">Passengers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= tickets_path %>">Tickets</a>
+      </li>
+      <li>
+        <% if current_user %>
+        Logged in as <%= current_user.email %>.
+        <%= link_to 'LogOut', logout_path, class: 'btn btn-outline-primary pull-xs-right' %>
+      <% else %>
+        <%= link_to 'SignUp', signup_path, class: 'btn btn-outline-primary pull-xs-right' %>
+        <%= link_to 'LogIn', login_path, class: 'btn btn-outline-primary pull-xs-right' %>
+      <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="container">
+    <%= yield %>
+  </body>
+</html>

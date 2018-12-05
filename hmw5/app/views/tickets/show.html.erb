@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ticket.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= link_to(image_tag(@ticket.image.url(:thumb))) if @ticket.image.exists? %>
+</p>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>

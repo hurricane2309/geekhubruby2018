@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @passenger.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= link_to(image_tag(@passenger.image.url(:thumb))) if @passenger.image.exists? %>
+</p>
+
+<%= link_to 'Edit', edit_passenger_path(@passenger) %> |
+<%= link_to 'Back', passengers_path %>
+<hr>
+<% @passenger.tickets.each do |ticket| %>
+<p><%= ticket.name %></p>
+<p><%= link_to(image_tag(ticket.image.url(:thumb))) if ticket.image.exists? %></p>
+<td><%= link_to 'Show', ticket %></td>
+<td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+<td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+<hr>
+<%= render 'tickets/form', ticket: @passenger.tickets.build %>

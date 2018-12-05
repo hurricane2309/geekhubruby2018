@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @airport.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= link_to(image_tag(@airport.image.url(:thumb))) if @airport.image.exists? %>
+</p>
+
+<%= link_to 'Edit', edit_airport_path(@airport) %> |
+<%= link_to 'Back', airports_path %>
+<hr>
+<% @airport.planes.each do |plane| %>
+<p><%= plane.name %></p>
+<p><%= link_to(image_tag(plane.image.url(:thumb))) if plane.image.exists? %></p>
+<td><%= link_to 'Show', plane %></td>
+<td><%= link_to 'Edit', edit_plane_path(plane) %></td>
+<td><%= link_to 'Destroy', plane, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+<hr>
+<%= render 'planes/form', plane: @airport.planes.build %>

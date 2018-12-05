@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @country.name %>
+</p>
+
+<p>
+  <%= link_to(image_tag(@country.image.url(:thumb))) if @country.image.exists? %>
+</p>
+
+<%= link_to 'Edit', edit_country_path(@country) %> |
+<%= link_to 'Back', countries_path %>
+<hr>
+<% @country.cities.each do |city| %>
+<p><%= city.name %></p>
+<p><%= link_to(image_tag(city.image.url(:thumb))) if city.image.exists? %></p>
+<td><%= link_to 'Show', city %></td>
+<td><%= link_to 'Edit', edit_city_path(city) %></td>
+<td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+<hr>
+<%= render 'cities/form', city: @country.cities.build %>
